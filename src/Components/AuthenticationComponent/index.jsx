@@ -29,10 +29,10 @@ const AuthenticationComponent = ({ children }) => {
     <div className="background-authentication">
       <div className="container">
         <div className="container-left">
-          <div className="branch">
+          <Link className="branch" to='/'>
             <img src={logo} alt="logo" />
             <p>Bird</p>
-          </div>
+          </Link>
 
           {children}
 
