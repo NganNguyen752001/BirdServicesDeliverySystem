@@ -44,7 +44,6 @@ const AuthenticationComponent = ({ children }) => {
               <div
                 className={`navbar_item ${item.path === location.pathname ? 'navbar_active' : ''}`}
                 key={key}
-                onClick={() => handleItemClick(item)}
               >
                 <Link to={item.path}>{item.display}</Link>
               </div>
