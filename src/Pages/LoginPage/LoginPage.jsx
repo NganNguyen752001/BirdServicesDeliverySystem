@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import AuthenticationComponent from '../../Components/AuthenticationComponent';
 import ForgotPasswordComponent from '../../Components/ForgotPasswordComponent';
+import InputField from '../../Components/Shared/InputField';
 import { BiAt } from 'react-icons/bi';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { FcGoogle } from 'react-icons/fc';
@@ -9,6 +10,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../Store/userSlice';
 import { validateEmail } from '../../Utils';
+
 
 const LoginPage = () => {
   const [showForgotPasswordModal, setShowForgotPasswordModal] = useState(false);
@@ -64,34 +66,25 @@ const LoginPage = () => {
       <div className="content">
         <h3>Welcome Back!</h3>
         <form className="login__form-content" onSubmit={handleLogin}>
-          <div className={`input-box ${errors.email ? 'error-input' : ''}`}>
-            <BiAt />
-            <input
-              type="text"
-              className='input'
-              placeholder=" "
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <label htmlFor="">Email address</label>
-          </div>
 
-          {errors.email && <span className="text-red-600">{errors.email}</span>}
+          <InputField
+            icon={BiAt}
+            type="text"
+            placeholder=" "
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            label="Email address"
+            error={errors.email}
+          />
 
-          <div className={`input-box ${errors.password ? 'error-input' : ''}`}>
-            <RiLockPasswordFill />
-            <input
-              type="password"
-              className="input"
-              placeholder=" "
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-
-            <label htmlFor="">Password</label>
-          </div>
-
-          {errors.password && <span className="text-red-600">{errors.password}</span>}
+          <InputField
+            icon={RiLockPasswordFill}
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            label="Password"
+            error={errors.password}
+          />
 
           <div className="password-feature">
             <div className="remember">

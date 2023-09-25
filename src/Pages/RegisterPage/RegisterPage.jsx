@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import AuthenticationComponent from '../../Components/AuthenticationComponent'
+import InputField from '../../Components/Shared/InputField'
+
 import { BiAt } from "react-icons/bi"
 import { RiLockPasswordFill } from "react-icons/ri"
 import { IoPersonCircleSharp } from "react-icons/io5"
 import { useNavigate, Link } from 'react-router-dom'
-
 import { useDispatch, useSelector } from 'react-redux';
 import { createUser, loginUser } from '../../Store/userSlice';
 
@@ -114,57 +115,43 @@ const RegisterPage = () => {
       <div className='content'>
         <h3>Create account</h3>
         <form className="login__form-content" onSubmit={handleSignup}>
-          <div className={`input-box ${errors.fullName ? 'error-input' : ''}`}>
-            <IoPersonCircleSharp />
-            <input type="text" className='input'
-              placeholder=" "
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
-            />
-            <label htmlFor="">Fullname</label>
-          </div>
 
-          {errors.fullName && <span className="text-red-600">{errors.fullName}</span>}
+          <InputField
+            icon={IoPersonCircleSharp}
+            type="text"
+            value={fullName}
+            onChange={(e) => setPassword(e.target.value)}
+            label="Fullname"
+            error={errors.fullName}
+          />
 
-          <div className={`input-box ${errors.email ? 'error-input' : ''}`}>
-            <BiAt />
-            <input type="text" className='input'
-              placeholder=" "
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <label htmlFor="">Email address</label>
-          </div>
+          <InputField
+            icon={BiAt}
+            type="text"
+            placeholder=" "
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            label="Email address"
+            error={errors.email}
+          />
 
-          {errors.email && <span className="text-red-600">{errors.email}</span>}
+          <InputField
+            icon={RiLockPasswordFill}
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            label="Password"
+            error={errors.password}
+          />
 
-          <div className={`input-box ${errors.password ? 'error-input' : ''}`}>
-            <RiLockPasswordFill />
-            <input type="password" className='input'
-              placeholder=" "
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-
-            <label htmlFor="">Password</label>
-          </div>
-
-          {errors.password && <span className="text-red-600">{errors.password}</span>}
-
-
-          <div className={`input-box ${errors.confirmPwd ? 'error-input' : ''}`}>
-            <RiLockPasswordFill />
-            <input type="password" className='input'
-              placeholder=" "
-              value={confirmPwd}
-              onChange={(e) => setConfirmPwd(e.target.value)}
-            />
-
-            <label htmlFor="">Confirm Password</label>
-          </div>
-
-          {errors.confirmPwd && <span className="text-red-600">{errors.confirmPwd}</span>}
-
+          <InputField
+            icon={RiLockPasswordFill}
+            type="password"
+            value={confirmPwd}
+            onChange={(e) => setConfirmPwd(e.target.value)}
+            label="Confirm Password"
+            error={errors.confirmPwd}
+          />
 
           <div className='dropdown'>
             <select value={role} onChange={(e) => setRole(e.target.value)}>
