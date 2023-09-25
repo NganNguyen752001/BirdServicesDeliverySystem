@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import LINK_API from "../Config";
+import { LINK_API } from "../Constants";
 
 //xử lý ở local
 const saveUserToLocalStorage = (user) => {
@@ -78,7 +78,7 @@ const userSlice = createSlice({
         state.loading = false;
         state.user = null;
         state.error = action.error.message;
-      })
+      });
   },
   reducers: {
     logoutUser: (state) => {
