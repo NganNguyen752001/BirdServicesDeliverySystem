@@ -31,22 +31,7 @@
           .title {
             font-weight: bold;
           }
-          ul {
-            padding: 10px;
-
-            li {
-              label {
-                display: block;
-                margin: 4px 0px;
-                cursor: pointer;
-              }
-
-              input[type="checkbox"] {
-                margin-right: 8px;
-                cursor: pointer;
-              }
-            }
-          }
+          
         }
 
         .price-filter {

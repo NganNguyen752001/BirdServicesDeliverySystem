@@ -6,12 +6,13 @@ import avatar_tmp from "../../Assets/Images/bird_hero.png"
 import ServiceCardItem from '../../Components/Shared/ServiceCardItem'
 import { renderRatingStars } from '../../Utils'
 import { useLocation } from 'react-router-dom';
+import MultipleSelect from '../../Components/Shared/MultipleSelect'
 
 
 const ServicePage = () => {
   const location = useLocation();
   useEffect(() => {
-    window.scrollTo(0, 0); 
+    window.scrollTo(0, 0);
   }, [location.pathname]);
 
   const listService = [
@@ -21,11 +22,11 @@ const ServicePage = () => {
     },
     {
       name: "grooming",
-      categories: ["Nail Clipping", "BEAK TRIMMING", "WING CLIPPING"]
+      categories: ["Nail Clipping", "Beak Trimming", "Wing Clipping"]
     },
     {
       name: "medical",
-      categories: ["DNA SEXING"]
+      categories: ["DNA Sexing"]
     }
   ]
 
@@ -57,6 +58,9 @@ const ServicePage = () => {
   const handleRatingChange = (e) => {
     setSelectedRating(e.target.value);
   };
+
+  //filter theo address
+  const addressList = ['Hồ Chí Minh', 'Hà Nội']
 
   //mảng data fake
   const fakeData = [
@@ -130,17 +134,13 @@ const ServicePage = () => {
             </div>
 
             <div className='category-filter'>
-              <p className='title'>Follow Category</p>
-              <ul>
-                {filteredItems.map((category, index) => (
-                  <li key={index}>
-                    <label>
-                      <input type="checkbox" name={`category-${index}`} value={category} />
-                      {category}
-                    </label>
-                  </li>
-                ))}
-              </ul>
+              <p className='title'>Category</p>
+              <MultipleSelect listMultiSelect={filteredItems}/>
+            </div>
+
+            <div className='category-filter'>
+              <p className='title'>Address</p>
+              <MultipleSelect listMultiSelect={addressList}/>
             </div>
 
             <div className='price-filter'>
@@ -179,19 +179,19 @@ const ServicePage = () => {
             <div className='rating-filter'>
               <p className='title'>Rating</p>
 
-              <div className='list-rating'>
+              <div className='list-rating justify-center'>
                 {ratingOptions.map((rating, index) => (
-                  <div key={index} className={`rating-option`}>
+                  <div key={index} className={`rating-option`} >
                     <input
                       type='radio'
                       id={`rating-${rating}`}
                       name='rating'
                       value={rating}
                       onChange={handleRatingChange}
-                    // className='hidden'
+                      className='hidden'
                     />
                     <label htmlFor={`rating-${rating}`} className={`cursor-pointer  ${selectedRating === rating ? 'active' : ''}`}>
-                      {renderRatingStars(rating)} {rating < 5 ? " trở lên" : null}
+                      {renderRatingStars(rating)}
                     </label>
                   </div>
                 ))}

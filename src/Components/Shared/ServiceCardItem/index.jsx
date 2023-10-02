@@ -15,7 +15,9 @@ const ServiceCardItem = (props) => {
                     <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{item.name}</h5>
                 </a>
 
-                <p className="text-gray-500 text-sm">{item.description}</p>
+                <p className="text-gray-500 text-sm">Địa chỉ: Hồ Chí Minh</p>
+
+                <p className="text-black-500 text-sm">{item.description}</p>
 
                 {/* rating */}
                 <div className="flex items-center mt-2.5 mb-5">
