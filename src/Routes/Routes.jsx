@@ -12,6 +12,10 @@ import ServicePage from "../Pages/ServicePage";
 import MyShopPage from "../Pages/MyShopPage/MyShopPage";
 import CreateServicePage from "../Pages/CreateServicePage/CreateServicePage";
 import ItemDetailPage from "../Pages/ItemDetailPage/ItemDetailPage";
+import ProviderPage from "../Pages/Provider/ProviderPage";
+import ProviderProfile from "../Pages/Provider/ProviderProfile";
+import ProviderSecurity from "../Pages/Provider/ProviderSecurity";
+import CustomerChangePasswordPage from "../Pages/CustomerChangePasswordPage"
 
 export const routes = [
     {
@@ -71,5 +75,30 @@ export const routes = [
         path: '/item-detail-page/:id',
         page: ItemDetailPage,
         isShowHeaderFooter: true
+    },
+    {
+        path: '/change-password-customer',
+        page: CustomerChangePasswordPage,
+        isShowHeaderFooter: true
+    },
+    {
+        path: '/provider',
+        page: ProviderPage,
+        isShowSidebarProvider: true
+    },
+    {
+        path: '/provider-dashboard',
+        page: ProviderPage,
+        isShowSidebarProvider: true
+    },
+    {
+        path: '/provider-profile',
+        page: ProviderProfile,
+        isShowSidebarProvider: true
+    },
+    {
+        path: '/provider-change-password',
+        page: ProviderSecurity,
+        isShowSidebarProvider: true
     },
 ]
