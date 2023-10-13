@@ -25,12 +25,12 @@ const NavbarProviderComponent = () => {
   }, [dataUser]);
 
   return (
-    <nav className="bg-white border ring-1 navbar-bg-color">
+    <nav className="bg-white border ring-1 navbar-bg-color fixed w-full z-20">
       <div className="flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="https://flowbite.com/" className="flex items-center">
-          <img src={logo} className="h-8 mr-3" alt="Flowbite Logo" />
-          <span className="self-center text-2xl font-semibold whitespace-nowrap">Flowbite</span>
-        </a>
+        <div className="flex items-center">
+          <img src={logo} className="h-8 mr-3" alt="birdlive Logo" />
+          <span className="self-center text-2xl font-semibold whitespace-nowrap">BIRDLIVE</span>
+        </div>
 
         <div className='flex gap-2 items-center justify-center'>
           <DropdownUser fullName={user?.fullName} role={user?.roleName} resetUser={setUser} />

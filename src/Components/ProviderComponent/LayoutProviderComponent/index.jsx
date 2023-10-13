@@ -6,10 +6,10 @@ const LayoutProviderComponent = ({ children }) => {
   return (
     <div>
       <NavbarProviderComponent />
-      <div className='h-full'>  
+
+      <div>  
         <SidebarProviderComponent />
-        
-        <div class="p-4 sm:ml-64">
+        <div className="p-4 sm:ml-64 pt-24">
           {children}
         </div>
       </div>

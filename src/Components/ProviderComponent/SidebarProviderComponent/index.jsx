@@ -38,7 +38,7 @@ const SidebarProviderComponent = () => {
   ];
 
   return (
-    <aside id="default-sidebar" className="fixed top-15 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+    <aside id="default-sidebar" className="mt-20 fixed top-15 h-full left-0 z-10 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
       <div className="h-full px-3 py-4 overflow-y-auto sidebar-bg-color ring-1">
         <ul className="space-y-2 font-medium">
           {providerMenu.map((item, index) => (

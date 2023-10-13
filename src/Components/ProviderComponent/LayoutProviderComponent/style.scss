@@ -1,0 +1,32 @@
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.content-container {
+  display: flex;
+  flex: 1;
+}
+
+NavbarProviderComponent {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  background-color: #ffffff; /* Màu nền của Navbar */
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  height: calc(100vh - 80px); /* 80px là chiều cao của Navbar */
+  overflow-y: auto;
+}
+
+SidebarProviderComponent {
+  width: 64px; /* Đặt chiều rộng của Sidebar ở đây */
+  background-color: #f3f4f6; /* Màu nền của Sidebar */
+  overflow-y: auto;
+}
