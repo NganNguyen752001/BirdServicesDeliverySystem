@@ -65,7 +65,7 @@ const LoginPage = () => {
             navigate('/provider');
             break;
           case 'Admin':
-            navigate('/admin');
+            navigate('/admin-dashboard');
             break;
           default:
             navigate('/');

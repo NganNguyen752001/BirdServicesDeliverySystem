@@ -1,21 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import './style.scss'
-import logo from '../../../Assets/Images/logo.png'
-import DropdownUser from '../../DropdownUser';
+import React, { useEffect, useState } from 'react'
+
+import { getUser } from '../../../Store/userSlice';
 import { useSelector } from 'react-redux';
+import DropdownUser from '../../DropdownUser';
+import logo from '../../../Assets/Images/logo.png'
 
-function getUser() {
-  let user = localStorage.getItem('user');
-  if (user) {
-    user = JSON.parse(user);
-  } else {
-    user = null;
-  }
-  return user;
-}
-
-const NavbarProviderComponent = () => {
-
+const NavbarAdminComponent = () => {
   const [user, setUser] = useState(null);
   const dataUser = useSelector((state) => state.user);
 
@@ -33,13 +23,13 @@ const NavbarProviderComponent = () => {
         </div>
 
         <div className='flex gap-2 items-center justify-center'>
-        <p>Hello provider, </p>
+          <p>Hello admin, </p>
           <DropdownUser fullName={user?.fullName} role={user?.roleName} resetUser={setUser} />
         </div>
       </div>
     </nav>
 
   );
-};
+}
 
-export default NavbarProviderComponent;
+export default NavbarAdminComponent

@@ -17,6 +17,11 @@ import ProviderProfile from "../Pages/Provider/ProviderProfile";
 import ProviderSecurity from "../Pages/Provider/ProviderSecurity";
 import CustomerChangePasswordPage from "../Pages/CustomerChangePasswordPage"
 
+import DashboardPage from '../Pages/AdminPage/DashboardPage'
+import AccountManagementPage from '../Pages/AdminPage/AccountManagementPage'
+import ProviderManagementPage from '../Pages/AdminPage/ProviderManagementPage'
+import ReportPage from '../Pages/AdminPage/ReportPage'
+
 export const routes = [
     {
         path: '/',
@@ -81,6 +86,7 @@ export const routes = [
         page: CustomerChangePasswordPage,
         isShowHeaderFooter: true
     },
+    // provider
     {
         path: '/provider',
         page: ProviderPage,
@@ -100,5 +106,26 @@ export const routes = [
         path: '/provider-change-password',
         page: ProviderSecurity,
         isShowSidebarProvider: true
+    },
+    // admin
+    {
+        path: '/admin-dashboard',
+        page: DashboardPage,
+        isShowAdmin: true
+    },
+    {
+        path: '/admin-account-management',
+        page: AccountManagementPage,
+        isShowAdmin: true
+    },
+    {
+        path: '/admin-provider-management',
+        page: ProviderManagementPage,
+        isShowAdmin: true
+    },
+    {
+        path: '/admin-report-management',
+        page: ReportPage,
+        isShowAdmin: true
     },
 ]

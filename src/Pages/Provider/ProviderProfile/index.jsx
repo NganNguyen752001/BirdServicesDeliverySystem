@@ -1,24 +1,42 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState, useEffect, useRef } from 'react';
+// import { useSelector } from 'react-redux';
 import avatar_tmp from '../../../Assets/Images/bird_hero.png'
 import { LiaSuitcaseRollingSolid } from 'react-icons/lia'
 import { AiOutlineEdit, AiFillCamera } from 'react-icons/ai'
 import './style.scss'
+import ProviderUpdateProfile from '../ProviderUpdateProfile';
 
-const getUser = () => {
-  const user = JSON.parse(localStorage.getItem('user')) || null;
-  return user;
-};
+// const getUser = () => {
+//   const user = JSON.parse(localStorage.getItem('user')) || null;
+//   return user;
+// };
 
 const ProviderProfile = () => {
 
-  const dataUser = useSelector((state) => state.user);
-  const [user, setUser] = useState(null);
+  // const dataUser = useSelector((state) => state.user);
+  const [user, setUser] = useState({
+    email: "provider@gmail.com",
+    fullName: "Ngân",
+    phone: "0182312123",
+    location: "TP HCM",
+    about: "At Bird Haven, we are dedicated to bringing the joy of avian companionship to your life. As a premier bird shop, we offer a wide range of services and products to cater to bird enthusiasts of all kinds. Whether you're an experienced avian aficionado or just starting your journey with feathered friends, we have something for everyone"
+  });
 
-  useEffect(() => {
-    setUser(getUser());
-  }, [dataUser]);
+  const [showUpdateProfile, setShowUpdateProfile] = useState(false);
 
+  // useEffect(() => {
+  //   setUser(getUser());
+  // }, [dataUser]);
+
+  const updateUser = (newUserData) => {
+
+    setUser(newUserData);
+    setShowUpdateProfile(false);
+  }
+
+  const handleEditProfileClick = () => {
+    setShowUpdateProfile(true);
+  }
 
   return (
 
@@ -53,11 +71,21 @@ const ProviderProfile = () => {
               </p>
             </div>
 
-            <div className='flex cursor-pointer gap-2 text-gray-400' >
+            <div className='flex cursor-pointer gap-2 text-gray-400'
+              onClick={handleEditProfileClick}
+            >
               <AiOutlineEdit className="w-5 h-5" />
               <p>Edit profile</p>
             </div>
 
+            {showUpdateProfile
+              &&
+              <ProviderUpdateProfile
+                user={user}
+                updateUser={updateUser}
+                onClose={() => setShowUpdateProfile(false)}
+              />
+            }
 
           </div>
 
@@ -87,7 +115,7 @@ const ProviderProfile = () => {
                   Phone
                 </dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  0123456xxx9
+                  {user.phone}
                 </dd>
               </div>
 
@@ -96,7 +124,7 @@ const ProviderProfile = () => {
                   Location
                 </dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  TP HCM
+                  {user.location}
                 </dd>
               </div>
 
@@ -105,7 +133,8 @@ const ProviderProfile = () => {
                   About
                 </dt>
                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  At Bird Haven, we are dedicated to bringing the joy of avian companionship to your life. As a premier bird shop, we offer a wide range of services and products to cater to bird enthusiasts of all kinds. Whether you're an experienced avian aficionado or just starting your journey with feathered friends, we have something for everyone.                  </dd>
+                  {user.about}
+                </dd>
               </div>
             </dl>
           </div>
