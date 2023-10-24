@@ -80,10 +80,9 @@ const HeaderComponent = () => {
     ];
 
     let menu = [];
-    //vì chưa có api nên menu sẽ auto vào defaultMenu
-    if (user && user?.roleName === 'Customer') {
+    if (user && user?.role === 'Customer') {
         menu = customerMenu;
-    } else if (user && user?.roleName === 'Provider') {
+    } else if (user && user?.role === 'Provider') {
         menu = providerMenu;
     } else {
         menu = defaultMenu
@@ -113,10 +112,8 @@ const HeaderComponent = () => {
                                 Log in
                             </NavLink>
                             :
-                            //tạm thời cho mặc định là role customer, sau có api sẽ chuyển thành user.role
-                            // nếu muốn đăng nhập với role Provider, thì thay customer thành Provider
                             <>
-                                <DropdownUser fullName={user?.fullName} role={user?.roleName} resetUser={setUser} />
+                                <DropdownUser id={user?.Id} role={user?.role} resetUser={setUser} />
                             </>
                         }
 
