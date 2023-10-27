@@ -19,10 +19,6 @@ const DropdownUser = (props) => {
 
     const customerDropdownList = [
         {
-            path: '/withdraw-money',
-            display: 'Withdraw money',
-        },
-        {
             path: '/profile',
             display: 'View profile',
         },
@@ -34,17 +30,9 @@ const DropdownUser = (props) => {
             path: '/order',
             display: 'Order history',
         },
-        {
-            path: '/transaction',
-            display: 'History transaction',
-        },
     ]
 
     const providerDropdownList = [
-        {
-            path: '/withdraw-money',
-            display: 'Withdraw money',
-        },
         {
             path: '/profile',
             display: 'View profile',
