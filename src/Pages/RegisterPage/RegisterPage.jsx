@@ -87,21 +87,23 @@ const RegisterPage = () => {
     }
 
     const userCredentials = {
-      fullName,
+      fullname: fullName,
       username,
       password,
       email : "string",
       dob: "2023-10-24T15:32:59.180Z",
       phoneNumber: 0,
+      // createdAt: "2023-10-27T01:49:10.663Z",
       gender: "string",
       image: "string",
-      role
+      role: parseInt(role)
     };
 
     dispatch(createUser(userCredentials))
       .unwrap()
       .then((result) => {
-        if (result.status === 200 || result.status === 201) {
+        // console.log(result)
+        if (result?.status === 200 || result?.status === 201) {
           dispatch(loginUser(userCredentials)).then(() => {
             navigate('/');
           });
