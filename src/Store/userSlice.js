@@ -48,8 +48,6 @@ export const loginUser = createAsyncThunk(
       userCredentials
     );
 
-    console.log(response)
-
     const token = response.data.result;
     const user = jwt_decode(token);
     saveUserToLocalStorage(user);

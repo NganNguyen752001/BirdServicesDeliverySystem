@@ -87,6 +87,7 @@ const RegisterPage = () => {
     }
 
     const userCredentials = {
+      avatarURL: "https://static.vecteezy.com/system/resources/previews/000/585/470/non_2x/bird-and-wing-logo-vector-template.jpg",
       fullname: fullName,
       username,
       password,
