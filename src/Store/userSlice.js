@@ -60,11 +60,17 @@ export const loginUser = createAsyncThunk(
         `${LINK_API}/api/User/Info?id=${id}`
       );
 
-      if (infoResponse?.data?.result?.role === 1 && infoResponse?.data?.result?.provider) {
+      if (
+        infoResponse?.data?.result?.role === 1 &&
+        infoResponse?.data?.result?.provider
+      ) {
         saveUserInfoToLocalStorage(infoResponse.data.result?.provider);
-      }else if (infoResponse?.data?.result?.role === 0 && infoResponse?.data?.result?.customer) {
+      } else if (
+        infoResponse?.data?.result?.role === 0 &&
+        infoResponse?.data?.result?.customer
+      ) {
         saveUserInfoToLocalStorage(infoResponse.data.result?.customer);
-      }else {
+      } else {
         saveUserInfoToLocalStorage(infoResponse.data.result);
       }
     }
@@ -109,6 +115,23 @@ export const createProvider = createAsyncThunk(
       providerCredentials
     );
     return response;
+  }
+);
+
+//update profile profile
+export const updateProvider = createAsyncThunk(
+  "user/updateProvider",
+  async ({id, providerCredentials}) => {
+
+    try {
+      const response = await axios.put(
+        `${LINK_API}/api/Provider/Update?id=${id}`,
+        providerCredentials
+      );
+      return response;
+    } catch (err) {
+      console.log(err);
+    }
   }
 );
 
@@ -205,6 +228,22 @@ const userSlice = createSlice({
         } else {
           state.error = action.error.message;
         }
+      })
+
+      //update profile provider
+      .addCase(updateProvider.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(updateProvider.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = action.payload;
+        state.error = null;
+      })
+      .addCase(updateProvider.rejected, (state, action) => {
+        state.loading = false;
+        state.user = null;
+        state.error = action.error.message;
       });
   },
   reducers: {
