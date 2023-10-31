@@ -227,7 +227,7 @@ const AccountManagementPage = () => {
 
         {selectedItem && (
           <ModalChangeStatusAccount
-            body={selectedItem.activeStatus ? 'Block' : 'Unblock'}
+            body={selectedItem.status === 0 ? 'Block' : 'Unblock'}
             onClose={handleCloseModal}
             onAction={handleConfirmAction}
           />
