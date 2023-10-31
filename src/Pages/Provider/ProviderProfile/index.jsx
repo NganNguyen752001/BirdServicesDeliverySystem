@@ -35,13 +35,11 @@ const ProviderProfile = () => {
       <div className='p-4 flex h-full flex-col justify-center items-center gap-5 '>
         <div className="img-avatar">
           <img className="object-cover w-full ring-1 ring-gray-300 md:h-auto md:w-48 md:rounded-none"
-            src={
-              user?.avatarURL && user.avatarURL !== "string"
-                ? user.avatarURL
-                : user?.image && user.image !== "string"
-                  ? user.image
-                  : avatar_tmp
-            }
+            src={user?.user?.avatarURL && user?.user?.avatarURL !== "string"
+              ? user.user?.avatarURL
+              : user?.user?.image && user?.user?.image !== "string"
+                ? user?.user?.image
+                : avatar_tmp}
             alt="" />
 
           <div className="hidden absolute bottom-0 right-0 bg-white p-2">

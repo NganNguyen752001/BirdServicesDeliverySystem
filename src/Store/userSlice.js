@@ -4,30 +4,32 @@ import { LINK_API } from "../Constants";
 import jwt_decode from "jwt-decode";
 
 //xử lý ở local
+//user login
 const saveUserToLocalStorage = (user) => {
-  localStorage.setItem("user", JSON.stringify(user));
+  localStorage.setItem("userLogin", JSON.stringify(user));
 };
 
 const removeUserFromLocalStorage = () => {
-  localStorage.removeItem("user");
-};
-
-const saveUserInfoToLocalStorage = (user) => {
-  localStorage.setItem("userInfo", JSON.stringify(user));
-};
-
-const removeUserInfoFromLocalStorage = () => {
-  localStorage.removeItem("userInfo");
+  localStorage.removeItem("userLogin");
 };
 
 export const getUser = () => {
-  let user = localStorage.getItem("user");
+  let user = localStorage.getItem("userLogin");
   if (user) {
     user = JSON.parse(user);
   } else {
     user = null;
   }
   return user;
+};
+
+//user info
+const saveUserInfoToLocalStorage = (user) => {
+  localStorage.setItem("userInfo", JSON.stringify(user));
+};
+
+const removeUserInfoFromLocalStorage = () => {
+  localStorage.removeItem("userInfo");
 };
 
 export const getUserInfoInLocalStorage = () => {
@@ -57,7 +59,14 @@ export const loginUser = createAsyncThunk(
       const infoResponse = await axios.get(
         `${LINK_API}/api/User/Info?id=${id}`
       );
-      saveUserInfoToLocalStorage(infoResponse?.data.result);
+
+      if (infoResponse?.data?.result?.role === 1 && infoResponse?.data?.result?.provider) {
+        saveUserInfoToLocalStorage(infoResponse.data.result?.provider);
+      }else if (infoResponse?.data?.result?.role === 0 && infoResponse?.data?.result?.customer) {
+        saveUserInfoToLocalStorage(infoResponse.data.result?.customer);
+      }else {
+        saveUserInfoToLocalStorage(infoResponse.data.result);
+      }
     }
 
     return user;
